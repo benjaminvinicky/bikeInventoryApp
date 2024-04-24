@@ -17,9 +17,11 @@ app.use(cors({
     origin:["https://localhost:4200"]
 }));
 
+//comment out fot local runs:
 app.use(express.static('public'));
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname,'public/browser', 'index.html'))
+    console.log('FIND ME: ', __dirname);
+    res.sendFile('public/browser/index.html', {root: __dirname})
 })
 
 app.get("/api/seed", async (req, res) => {
