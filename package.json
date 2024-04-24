@@ -1,0 +1,10 @@
+{
+    "name": "bike-inventory-app",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "cd UI && npm start & cd API && npm start",
+        "start": "cd API/build && node server.js",
+        "prebuild": "cd API && npm run build",
+        "build": "cd UI && npm run build"
+    }
+}

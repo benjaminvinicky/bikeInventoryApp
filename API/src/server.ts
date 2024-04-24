@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
-
+import path from 'path';
 import express from "express";
 import cors from "cors";
 import { dbConnect } from './config/database.config';
@@ -16,6 +16,11 @@ app.use(cors({
     credentials: false,
     origin:["https://localhost:4200"]
 }));
+
+app.use(express.static('public'));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname,'public/browser', 'index.html'))
+})
 
 app.get("/api/seed", async (req, res) => {
     const bikeCount = await BikeModel.countDocuments();

@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ui",
+            "outputPath": "../API/build/public",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -47,13 +47,19 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "800kb",
                   "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "outputHashing": "all"
@@ -102,72 +108,6 @@
               "src/styles.scss"
             ],
             "scripts": []
-          }
-        }
-      }
-    },
-    "inventory": {
-      "projectType": "library",
-      "root": "projects/inventory",
-      "sourceRoot": "projects/inventory/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "projects/inventory/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/inventory/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/inventory/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/inventory/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
-          }
-        }
-      }
-    },
-    "bike-inventory": {
-      "projectType": "library",
-      "root": "libs/inventory",
-      "sourceRoot": "libs/inventory/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "project": "libs/inventory/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "libs/inventory/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "libs/inventory/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "libs/inventory/tsconfig.spec.json",
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ]
           }
         }
       }
