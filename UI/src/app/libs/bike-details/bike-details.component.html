@@ -1,0 +1,79 @@
+<button
+  class="close-modal-button"
+  aria-label="Close dialog"
+  mat-icon-button
+  mat-dialog-close
+>
+  <mat-icon>close</mat-icon>
+</button>
+
+<div class="modal-content">
+  <div class="fx-column fx-layout-align-start-center">
+      <form
+        [formGroup]="bikeForm"
+        (ngSubmit)="submitForm(bikeForm.value)"
+      >
+      <mat-form-field>
+        <mat-label>Name:</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="type">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" type="text">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="price" type="number">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Wheel Name</mat-label>
+        <input matInput formControlName="wheelName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Wheel Size</mat-label>
+        <input matInput formControlName="wheelSize">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Frame Name</mat-label>
+        <input matInput formControlName="frameName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Frame Size</mat-label>
+        <input matInput formControlName="frameSize">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Frame Weight</mat-label>
+        <input matInput formControlName="frameWeight">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Stock</mat-label>
+        <input matInput formControlName="stock" type="number">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Availability Id</mat-label>
+        <input matInput formControlName="orderAvailabilityId" type="number">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Image URL</mat-label>
+        <input matInput formControlName="imageUrl">
+      </mat-form-field>
+
+
+      <div class="actions-container">
+        <button
+          mat-flat-button
+          class="cta-button cta-button-large full-width"
+          type="button"
+          color="accent"
+          [disabled]="!bikeForm.valid"
+          (click)="submitForm(bikeForm.value)"
+        >
+          Create/Update
+        </button>
+      </div>
+      </form>
+</div>
