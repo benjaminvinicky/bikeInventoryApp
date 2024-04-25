@@ -17,13 +17,6 @@ app.use(cors({
     origin:["https://localhost:4200"]
 }));
 
-//comment out fot local runs:
-app.use(express.static('public'));
-app.get('*', (req, res) => {
-    console.log('FIND ME: ', __dirname);
-    res.sendFile('public/browser/index.html', {root: __dirname})
-})
-
 app.get("/api/seed", async (req, res) => {
     const bikeCount = await BikeModel.countDocuments();
     if (bikeCount > 0) {
@@ -60,6 +53,12 @@ app.delete("/api/bike/:id", async (req, res) => {
 }) 
 
 const port = 5000;
+
+//comment out fot local runs:
+app.use(express.static(path.join(__dirname, '../../UI/dist')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname,'../../UI/dist', 'index.html'))
+})
 
 app.listen(port, () => {
     console.log("Website serverd on https://localhost:" + port);
